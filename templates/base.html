@@ -1,19 +1,53 @@
 <!DOCTYPE html>
 <html lang="ko">
 
-{% include 'head.html' %}
+<head>
+    <meta charset="UTF-8">
+    <!--  BOOTSTRAO LINK  -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!--  GOOGLE FONTS LINK  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <!--  DEFAULT CSS LINK  -->
+    <link rel="stylesheet" href="/static/base.css">
+    <title>Pinterest</title>
+</head>
+
 
 <body>
 
-    {% include 'header.html' %}
-    <hr>
-    {% block content %}
-    <div style = "height: 20rem; background-color: #38df81; border-radius: 1rem; margin: 2rem;">
-
+<div class = "pinterest_header">
+    <div><h1 class = "pinterest_logo">Pinterest</h1>
     </div>
-    {% endblock %}
-    <hr>
-    {% include 'footer.html' %}
+    <div>
+        <span>nav1</span>
+        <span>nav2</span>
+        <span>nav3</span>
+        <span>nav4</span>
+    </div>
+</div>
+
+<hr>
+
+{% block content %}
+<div style = "height: 20rem; background-color: #38df81; border-radius: 1rem; margin: 2rem;">
+
+</div>
+{% endblock %}
+
+<hr>
+
+<div class = "pinterest_footer">
+    <div class = "pinterest_footer_button">
+        <span>공지사항</span> |
+        <span>제휴문의</span> |
+        <span>서비스 소개</span>
+    </div>
+    <div class = "pinterest_footer_logo">
+        <h6 class = "pinterest_logo">Pinterest</h6>
+    </div>
+</div>
 
 </body>
 </html>
