@@ -11,11 +11,33 @@
     <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
     <!--  DEFAULT CSS LINK  -->
     <link rel="stylesheet" href="/static/base.css">
+    <style>
+        @font-face {
+            font-family: 'NanumSqareR';
+            src: local('NanumSquareR'),
+            url("/static/font/NanumSquareR.ttf") format("opentype");
+        }
+        @font-face {
+            font-family: 'NanumSqareEB';
+            src: local('NanumSquareEB'),
+            url("/static/font/NanumSquareEB.ttf") format("opentype");
+        }
+        @font-face {
+            font-family: 'NanumSqareB';
+            src: local('NanumSquareB'),
+            url("/static/font/NanumSquareB.ttf") format("opentype");
+        }
+        @font-face {
+            font-family: 'NanumSqareL';
+            src: local('NanumSquareL'),
+            url("/static/font/NanumSquareL.ttf") format("opentype");
+        }
+    </style>
     <title>Pinterest</title>
 </head>
 
 
-<body>
+<body style="font-family: 'NanumSqareR';">
 
 <div class = "pinterest_header">
     <div><h1 class = "pinterest_logo">Pinterest</h1>
@@ -39,11 +61,12 @@
 
 <hr>
 
-{% block content %}
-<div style = "height: 20rem; background-color: #38df81; border-radius: 1rem; margin: 2rem;">
 
+<div style="text-align: center;">
+{% block content %}
+    {% endblock %}
 </div>
-{% endblock %}
+
 
 <hr>
 
