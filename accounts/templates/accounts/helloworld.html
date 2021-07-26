@@ -3,10 +3,24 @@
 {% block content %}
 
     <div style = "height: 20rem; background-color: #38df81; border-radius: 1rem; margin: 2rem;">
+        <h1 style="font-family: 'lobster', cursive;">
+            Hello world
+        </h1>
         <form action="/accounts/hello/" method="post">
             {% csrf_token %}
-            <input type="submit" class="btn btn-primary" value="POST">
+            <div>
+                <input type="text" name="hello_world_input">
+            </div>
+
+            <div>
+                <input type="submit" class="btn btn-primary" value="POST">
+            </div>
+
         </form>
-        <h1>{{ text }}</h1>
+        {% if text %}
+        {% for hello_world in text %}
+        <h4>{{ hello_world.text }}</h4>
+        {% endfor %}
+        {% endif %}
     </div>
 {% endblock %}
