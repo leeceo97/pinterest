@@ -10,7 +10,6 @@ from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
 from .decorator import account_ownership_required
 from .forms import AccountUpdateForm
 from .models import HelloWorld
-# Create your views here.
 
 has_ownership = [
     account_ownership_required,login_required
