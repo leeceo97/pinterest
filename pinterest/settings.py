@@ -45,6 +45,7 @@ DJANGO_APPS = [
 
 PROJECT_APPS = [
     'accounts',
+    'profiles',
 ]
 
 THIRD_PARTY_APPS = [
@@ -143,7 +144,7 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = reverse_lazy('accounts:hello')
-LOGIN_REDIRECT_URL = reverse_lazy('accounts:hello')
+LOGOUT_REDIRECT_URL = reverse_lazy('accounts:login')
 
 MEDIA_URL = '/media/'
 
