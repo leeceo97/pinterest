@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, UpdateView
 
@@ -13,7 +13,6 @@ class ProfileCreateView(CreateView):
     model = Profile
     context_object_name = 'target_profile'
     form_class = ProfileCreationForm
-    success_url = reverse_lazy('accounts:hello_world')
     template_name = 'profiles/create.html'
 
     def form_valid(self, form):
@@ -21,6 +20,9 @@ class ProfileCreateView(CreateView):
         temp_profile.user = self.request.user
         temp_profile.save()
         return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse('accounts:detail', kwargs={'pk':self.object.user.pk})
 
 @method_decorator(profile_ownership_required, 'get')
 @method_decorator(profile_ownership_required, 'post')
@@ -30,3 +32,6 @@ class ProfileUpdateView(UpdateView):
     form_class = ProfileCreationForm
     success_url = reverse_lazy('accounts:hello_world')
     template_name = 'profiles/update.html'
+
+    def get_success_url(self):
+        return reverse('accounts:detail', kwargs={'pk':self.object.user.pk})
