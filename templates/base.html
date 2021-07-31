@@ -43,7 +43,9 @@
     <div><h1 class = "pinterest_logo">Pinterest</h1>
     </div>
     <div>
-        <span>nav1</span>
+        <a href="{% url 'articles:list' %}?next={{ request.path }}">
+            <span>Alticles</span>
+        </a>
         <span>nav2</span>
         <span>nav3</span>
         {% if not user.is_authenticated %}
@@ -68,7 +70,7 @@
 <hr>
 
 
-<div style="text-align: center;">
+<div>
 {% block content %}
     {% endblock %}
 </div>
