@@ -47,6 +47,7 @@ PROJECT_APPS = [
     'accounts',
     'profiles',
     'articles',
+    'comments',
 ]
 
 THIRD_PARTY_APPS = [
