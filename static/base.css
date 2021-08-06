@@ -18,3 +18,9 @@
 .pinterest_footer_logo{
     margin-top: 1rem;
 }
+
+@media screen and (max-width:500px) {
+    html {
+        font-size: 13px;
+    }
+}
