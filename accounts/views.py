@@ -1,3 +1,4 @@
+from decorator import decorator
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
@@ -6,7 +7,9 @@ from django.shortcuts import render
 from django.urls import reverse, reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
+from django.views.generic.list import MultipleObjectMixin
 
+from articles.models import Article
 from .decorator import account_ownership_required
 from .forms import AccountUpdateForm
 from .models import HelloWorld
@@ -15,7 +18,8 @@ has_ownership = [
     account_ownership_required,login_required
 ]
 
-@login_required
+@method_decorator(login_required('get'))
+@method_decorator(login_required('post'))
 def hello_world(request):
     if request.method == "POST":
         temp = request.POST.get('hello_world_input')
@@ -35,10 +39,15 @@ class AccountCreateView(CreateView):
     template_name = 'accounts/create.html'
 
 
-class AccountDetailView(DetailView):
+class AccountDetailView(DetailView, MultipleObjectMixin):
     model = User
     context_object_name = 'target_user'
     template_name = 'accounts/detail.html'
+    paginate_by = 25
+    
+    def get_context_data(self, **kwargs):
+        object_list = Article.objects.filter(writer=self.get_object())
+        return super(AccountDetailView, self).get_context_data(object_list=object_list, **kwargs)
 
 @method_decorator(has_ownership, 'get')
 @method_decorator(has_ownership, 'post')
