@@ -6,9 +6,6 @@ from django.views.generic import CreateView, UpdateView
 from profiles.decorator import profile_ownership_required
 from profiles.forms import ProfileCreationForm
 from profiles.models import Profile
-
-@method_decorator(profile_ownership_required, 'get')
-@method_decorator(profile_ownership_required, 'post')
 class ProfileCreateView(CreateView):
     model = Profile
     context_object_name = 'target_profile'
@@ -24,8 +21,7 @@ class ProfileCreateView(CreateView):
     def get_success_url(self):
         return reverse('accounts:detail', kwargs={'pk':self.object.user.pk})
 
-@method_decorator(profile_ownership_required, 'get')
-@method_decorator(profile_ownership_required, 'post')
+
 class ProfileUpdateView(UpdateView):
     model = Profile
     context_object_name = 'target_profile'

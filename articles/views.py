@@ -11,8 +11,7 @@ from articles.models import Article
 from comments.forms import CommentCreationForm
 
 
-@method_decorator(login_required, 'get')
-@method_decorator(login_required, 'post')
+
 class ArticleCreateView(CreateView):
     model = Article
     form_class = ArticleCreationForm
@@ -33,8 +32,7 @@ class ArticleDetailView(DetailView, FormMixin):
     context_object_name = 'target_article'
     template_name = 'articles/detail.html'
 
-@method_decorator(article_ownership_required, 'get')
-@method_decorator(article_ownership_required, 'post')
+
 class ArticleUpdateView(UpdateView):
     model = Article
     form_class = ArticleCreationForm
@@ -44,8 +42,7 @@ class ArticleUpdateView(UpdateView):
     def get_success_url(self):
         return reverse('articles:detail', kwargs={'pk': self.object.pk})
 
-@method_decorator(article_ownership_required, 'get')
-@method_decorator(article_ownership_required, 'post')
+
 class ArticleDeleteView(DeleteView):
     model = Article
     context_object_name = 'target_article'

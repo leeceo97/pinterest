@@ -23,8 +23,7 @@ class CommentCreateView(CreateView):
     def get_success_url(self):
         return reverse('articles:detail', kwargs={'pk':self.object.article.pk})
 
-@method_decorator(comment_ownership_required, 'get')
-@method_decorator(comment_ownership_required, 'post')
+
 class CommentDeleteView(DeleteView):
     model = Comment
     template_name = 'comments/delete.html'

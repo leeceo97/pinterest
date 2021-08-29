@@ -9,8 +9,7 @@ from projects.forms import ProjectCreationForm
 from projects.models import Project
 
 
-@method_decorator(login_required, 'get')
-@method_decorator(login_required, 'post')
+
 class ProjectCreateView(CreateView):
     model = Project
     form_class = ProjectCreationForm

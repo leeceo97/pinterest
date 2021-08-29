@@ -18,8 +18,6 @@ has_ownership = [
     account_ownership_required,login_required
 ]
 
-@method_decorator(login_required('get'))
-@method_decorator(login_required('post'))
 def hello_world(request):
     if request.method == "POST":
         temp = request.POST.get('hello_world_input')
@@ -49,8 +47,7 @@ class AccountDetailView(DetailView, MultipleObjectMixin):
         object_list = Article.objects.filter(writer=self.get_object())
         return super(AccountDetailView, self).get_context_data(object_list=object_list, **kwargs)
 
-@method_decorator(has_ownership, 'get')
-@method_decorator(has_ownership, 'post')
+
 class AccountUpdateView(UpdateView):
     model = User
     context_object_name = 'target_user'
@@ -59,8 +56,7 @@ class AccountUpdateView(UpdateView):
     template_name = 'accounts/update.html'
 
 
-@method_decorator(has_ownership, 'get')
-@method_decorator(has_ownership, 'post')
+
 class AccountDeleteView(DeleteView):
     model = User
     context_object_name = 'target_user'
